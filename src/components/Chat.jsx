@@ -1,42 +1,47 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function Chat() {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      text: "It's over Anakin,\nI have the high ground.",
-      isSentByUser: false
-    },
-    {
-      id: 2,
-      text: "You underestimate my power!",
-      isSentByUser: true
-    }
-  ]);
-  const [inputMessage, setInputMessage] = useState('');
-  const messagesEndRef = useRef(null);
+    const [messages, setMessages] = useState([]);
+    const [inputMessage, setInputMessage] = useState('');
+    const [ws, setWs] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+    // 웹소켓 연결 초기화
+    useEffect(() => {
+        const websocket = new WebSocket('ws://localhost:8080/chat-endpoint');
+        setWs(websocket);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+        websocket.onmessage = (event) => {
+            setIsLoading(false); // 로딩 상태 해제
+            const botMessage = {
+                id: messages.length + 1,
+                text: event.data,
+                isSentByUser: false
+            };
+            setMessages(prev => [...prev, botMessage]);
+        };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (!inputMessage.trim()) return;
+        return () => websocket.close();
+    }, []);
 
-    const newMessage = {
-      id: messages.length + 1,
-      text: inputMessage,
-      isSentByUser: true
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+        if (!inputMessage.trim() || !ws) return;
+
+        // 사용자 메시지 추가
+        const newMessage = {
+            id: messages.length + 1,
+            text: inputMessage,
+            isSentByUser: true
+        };
+        setMessages(prev => [...prev, newMessage]);
+        setIsLoading(true); // 로딩 상태 활성화
+
+        // 웹소켓으로 메시지 전송
+        ws.send(inputMessage);
+        setInputMessage('');
     };
-
-    setMessages([...messages, newMessage]);
-    setInputMessage('');
-  };
 
   return (
     <div className="min-h-screen bg-base-200 p-4 flex items-center justify-center">
@@ -64,10 +69,11 @@ function Chat() {
               placeholder="메시지를 입력하세요..."
               className="input input-bordered flex-1 input-sm"
               value={inputMessage}
+              disabled={isLoading} // 로딩 중에는 입력 비활성화 가능
               onChange={(e) => setInputMessage(e.target.value)}
             />
-            <button type="submit" className="btn btn-primary btn-sm">
-              보내기
+            <button type="submit" className="btn btn-primary btn-sm"  disabled={isLoading}>
+              {isLoading ? '전송 중...' : '보내기'}
             </button>
           </div>
         </form>
