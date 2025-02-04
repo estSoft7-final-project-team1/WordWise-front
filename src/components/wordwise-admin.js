@@ -30,7 +30,7 @@ const WordWisePage = () => {
           <button className="text-gray-600">학습하기</button>
           <button className="text-gray-600">단어장</button>
           <button className="text-gray-600">채팅연습</button>
-          <button className="bg-blue-500 text-white px-4 py-1 rounded-md">로그아웃</button>
+          <button className="bg-red-500 text-white px-4 py-1 rounded-md">로그아웃</button>
         </div>
       </header>
 

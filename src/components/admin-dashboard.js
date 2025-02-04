@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { User, Book, Award } from 'lucide-react';
 import { LineChart, Line, PieChart, Pie } from 'recharts';
+import Imagebackground from '../static/image/imagebackground.png';
+import ImageLogo from '../static/image/imagelogo.png';
 
 const AdminDashboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,34 +36,53 @@ const AdminDashboard = () => {
     <div className="w-full min-h-screen bg-gray-50">
       <header className="bg-white border-b">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-2">
-          <img src="/api/placeholder/40/40" alt="WordWise Logo" className="h-8" />
+          <img src={ImageLogo} alt="WordWise Logo" className="h-8" />
           <div className="flex gap-6">
             <button className="text-gray-600">관리자 대시보드</button>
             <button className="text-gray-600">학습하기</button>
             <button className="text-gray-600">단어장</button>
             <button className="text-gray-600">채팅연습</button>
-            <button className="bg-blue-500 text-white px-4 py-1 rounded">로그아웃</button>
+            <button className="bg-red-500 text-white px-4 py-1 rounded">로그아웃</button>
           </div>
         </div>
       </header>
 
-      <div className="bg-blue-500 p-8">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-2xl font-bold text-white mb-2">{slides[currentSlide].title}</h1>
-          <p className="text-white opacity-90">{slides[currentSlide].subtitle}</p>
+      {/* 배너 섹션 */}
+      <div className="relative bg-blue-500">
+        {/* 배경 이미지 */}
+        <div 
+          className="absolute inset-0 w-full"
+          style={{
+            backgroundImage: `url(${Imagebackground})`,
+            backgroundSize: '100% 100%',
+            backgroundPosition: 'center',
+            height: '180px'
+          }}
+        />
+        
+        {/* 컨텐츠 */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 py-12">
+          <h1 className="text-2xl font-bold text-white mb-2">
+            {slides[currentSlide].title}
+          </h1>
+          <p className="text-white text-sm opacity-90">
+            {slides[currentSlide].subtitle}
+          </p>
           <div className="flex justify-center gap-2 mt-4">
             <button className="text-white">&lt;</button>
             {slides.map((_, idx) => (
               <div
                 key={idx}
-                className={`w-2 h-2 rounded-full bg-white ${idx === currentSlide ? 'opacity-100' : 'opacity-50'}`}
+                className={`w-2 h-2 rounded-full bg-white ${
+                  idx === currentSlide ? 'opacity-100' : 'opacity-50'
+                }`}
               />
             ))}
             <button className="text-white">&gt;</button>
           </div>
         </div>
       </div>
-
+      
       <div className="max-w-5xl mx-auto px-4 py-8">
         <h2 className="text-center text-xl font-bold mb-8">관리자 대시보드</h2>
 
