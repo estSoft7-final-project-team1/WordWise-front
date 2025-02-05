@@ -7,6 +7,7 @@ import Chat from './components/Chat';
 import Admin from './components/wordwise-admin'
 import Index from './components/wordwise-index'
 // import DashBoard from './components/wordwise-dashboard'
+
 function App() {
   return (
     <Router>
