@@ -4,7 +4,6 @@ import { EffectCoverflow } from 'swiper/modules';
 import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import './WordTest.css'
 
 const WordTest = () => {
   const [testData, setTestData] = useState([]);
