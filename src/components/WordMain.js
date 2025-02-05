@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import "../static/css/WordMain.css";
 
 function WordMain() {
+  const [key, setKey] = useState(0);
   const [wordText, setWordText] = useState("");
   const [exampleSentences, setExampleSentences] = useState([]);
   const [error, setError] = useState("");
@@ -13,39 +14,21 @@ function WordMain() {
     exampleDtos: [],
     formerExampleIds: []
   });
-  const [isLoadingModalOpen, setIsLoadingModalOpen] = useState(false);
-  const [isResultModalOpen, setIsResultModalOpen] = useState(false);
   const [saveExamplesResult, setSaveResult] = useState({
     wordBookId: null,
     duplicatedPersonalExamples: [],
     newPersonalExamples: []
   });
   const [dots, setDots] = useState('');
-
-  useEffect(() => {
-    if (isLoadingModalOpen) {
-      const interval = setInterval(() => {
-        setDots(prevDots => {
-          if (prevDots.length < 3) {
-            return prevDots + '.';
-          } else {
-            return '';
-          }
-        });
-      }, 500); // 0.5초마다 점을 추가
-
-      return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-    } else {
-      setDots(''); // 모달이 닫힐 때 점 초기화
-    }
-  }, [isLoadingModalOpen]);
+  const [isDetailPage, setIsDetailPage] = useState(false);
 
   const handleInputChange = (e) => {
     setWordText(e.target.value);
   };
 
   const fetchExample = async () => {
-    setIsLoadingModalOpen(true);
+    // setIsLoadingModalOpen(true);
+    document.getElementById("loadingModal").showModal();
     try {
       const response = await axios.get(
           `/word/${wordText}`);
@@ -56,13 +39,16 @@ function WordMain() {
     } catch (err) {
       setError("예문을 가져오는 데 실패했습니다.");
     } finally {
-      setIsLoadingModalOpen(false);
+      document.getElementById("loadingModal").close();
+      if (!isDetailPage) {
+        setIsDetailPage(true);
+      }
     }
   };
 
   const reloadWord = async () => {
-    setIsLoadingModalOpen(true);
-
+    //setIsLoadingModalOpen(true);
+    document.getElementById("loadingModal").showModal();
     try {
       const response = await axios.post(
           `/word/${wordDto.wordText}/reload`,
@@ -77,7 +63,7 @@ function WordMain() {
     } catch (err) {
       alert("새로고침 실패!");
     } finally {
-      setIsLoadingModalOpen(false);
+      document.getElementById("loadingModal").close();
     }
   };
 
@@ -102,12 +88,8 @@ function WordMain() {
           }
       );
 
-      alert("응답을 받아왔음");
       setSaveResult(response.data);
-
-      alert(JSON.stringify(response.data));
-
-      setIsResultModalOpen(true);
+      document.getElementById("saveResultModal").showModal();
     } catch (error) {
       if (error.response) {
         if (error.response.status === 409) {
@@ -136,46 +118,32 @@ function WordMain() {
     });
   };
 
-  const resetState = () => {
-    setWordText(""); // 입력 필드 초기화
-    setExampleSentences([]); // 예문 리스트 초기화
-    setCheckedExamples(new Set()); // 체크박스 상태 초기화
-    setWordDto({
-      wordText: "",
-      definition: "",
-      exampleDtos: [],
-      formerExampleIds: [],
-    });
-    setSaveResult({
-      wordBookId: null,
-      duplicatedExamples: [],
-      newExamples: []
-    });
-    setIsResultModalOpen(false); // 모달 닫기
-  };
-
   return (
       <div>
         <form onSubmit={handleSubmit}>
           <input
               type="text"
+              className="w-full max-w-xs"
               value={wordText}
               onChange={handleInputChange}
               pattern="[a-z]*"
               title="영어 소문자만 입력할 수 있습니다."
               placeholder="단어를 입력하세요"
           />
-          <button type="submit">예문 가져오기!</button>
+          <button className="btn btn-neutral" type="submit">예문 가져오기!</button>
         </form>
+        <div className="word-div">
         {error && <p style={{color: "red"}}>{error}</p>}
-        <h3>정의</h3>
+        {isDetailPage && <h3>정의</h3>}
         {wordDto.definition && <p>{wordDto.definition}</p>}
-        <h3>예문</h3>
+        {isDetailPage && <h3>예문</h3>}
+        </div>
         <ul>
           {exampleSentences.map((example, index) => (
               <li key={index}>
                 <input
                     type="checkbox"
+                    className = "checkbox"
                     checked={checkedExamples.has(example)}
                     onChange={() => handleCheckboxChange(example)}
                 />
@@ -190,65 +158,57 @@ function WordMain() {
               </li>
           ))}
         </ul>
-        <div className="button-div">
-          <button onClick={reloadWord} disabled={!wordText}>
+        {isDetailPage && <div className="button-div">
+          <button className="btn btn-neutral" onClick={reloadWord} disabled={!wordText}>
             예문 새로고침
           </button>
-          <button onClick={save}>
+          <button className="btn btn-neutral" onClick={save}>
             저장
           </button>
-        </div>
+        </div>}
 
         {/* 모달 */}
-        {isLoadingModalOpen && (
-            <div className="modal-overlay">
-              <div className="fixed-modal-content">
-                <p>예문을 생성중입니다{dots}</p>
-              </div>
-            </div>
-        )}
+        <dialog id="loadingModal" className="modal">
+          <div className="modal-box">
+            <p>예문을 생성중입니다</p>
+            <span className="loading loading-spinner loading-md"></span>
+          </div>
+        </dialog>
 
-        {isResultModalOpen && (
-            <div className="modal-overlay">
-              <div className="modal-content">
-                <p>저장되었습니다!</p>
-
-                {saveExamplesResult.newPersonalExamples.length > 0 && (
-                    <>
-                      <h3>저장된 예문</h3>
-                      <ul>
-                        {saveExamplesResult.newPersonalExamples.map(
-                            (example, index) => (
-                                <li key={index}>
-                                  <p><strong></strong> {example}</p>
-                                </li>
-                            ))}
-                      </ul>
-                    </>
-                )}
-
-                {saveExamplesResult.duplicatedPersonalExamples.length > 0 && (
-                    <>
-                      <h3>이미 저장된 예문</h3>
-                      <ul>
-                        {saveExamplesResult.duplicatedPersonalExamples.map(
-                            (example, index) => (
-                                <li key={index}>
-                                  <p><strong></strong> {example}</p>
-                                </li>
-                            ))}
-                      </ul>
-                    </>
-                )}
-
-                <button onClick={() => {
-                  setIsResultModalOpen(false);
-                  resetState();
-                }}>닫기
-                </button>
-              </div>
-            </div>
-        )}
+        <dialog id="saveResultModal" className="modal">
+          <div className="modal-box">
+            <p>저장되었습니다!</p>
+            {saveExamplesResult.newPersonalExamples.length > 0 && (
+                <>
+                  <h3>저장된 예문</h3>
+                  <ul>
+                    {saveExamplesResult.newPersonalExamples.map(
+                        (example, index) => (
+                            <li key={index}>
+                              <p><strong></strong> {example}</p>
+                            </li>
+                        ))}
+                  </ul>
+                </>
+            )}
+            {saveExamplesResult.duplicatedPersonalExamples.length > 0 && (
+                <>
+                  <h3>이미 저장된 예문</h3>
+                  <ul>
+                    {saveExamplesResult.duplicatedPersonalExamples.map(
+                        (example, index) => (
+                            <li key={index}>
+                              <p><strong></strong> {example}</p>
+                            </li>
+                        ))}
+                  </ul>
+                </>
+            )}
+            <form method="dialog">
+              <button onClick={()=>setKey(prevKey => prevKey + 1)}>닫기</button>
+            </form>
+          </div>
+        </dialog>
       </div>
   );
 }
