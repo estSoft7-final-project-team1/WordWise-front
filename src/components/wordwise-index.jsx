@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, X, ArrowRight } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const WordWisePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,9 +27,11 @@ const WordWisePage = () => {
       <header className="flex justify-between items-center px-4 py-2">
         <img src="/api/placeholder/40/40" alt="WordWise Logo" className="w-10 h-10" />
         <div className="flex gap-4">
-          <button className="text-gray-600">학습하기</button>
-          <button className="text-gray-600">단어장</button>
-          <button className="text-gray-600">채팅연습</button>
+          <button className="text-gray-600"><Link to="/api/wordbook">단어장</Link></button>
+          <button className="text-gray-600"><Link to="/api/mywordbook">개인단어장</Link></button>
+          <button className="text-gray-600"><Link to="/api/wordtest">단어테스트</Link></button> 
+          <button className="text-gray-600"><Link to="/api/word">예문생성</Link></button> 
+          <button className="text-gray-600"><Link to="/api/chat">채팅회화연습</Link></button>
           <button className="bg-blue-500 text-white px-4 py-1 rounded-md">로그인</button>
         </div>
       </header>
@@ -67,21 +70,26 @@ const WordWisePage = () => {
       <div className="max-w-5xl mx-auto mt-12 px-4">
         <h2 className="text-xl font-bold mb-6">주요 기능</h2>
         <div className="grid grid-cols-3 gap-6 mb-12">
-          <div className="bg-gray-50 p-6 rounded-lg text-center">
+
+          <div className="bg-gray-50 p-6 rounded-lg text-center">{/*여기*/}
             <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
               <div className="w-8 h-8 bg-blue-500 rounded" />
             </div>
             <h3 className="font-bold mb-2">스마트 단어장</h3>
             <p className="text-sm text-gray-600">개인화된 학습 알고리즘으로 효율적인 단어 학습을 제공해드립니다</p>
           </div>
-          <div className="bg-gray-50 p-6 rounded-lg text-center">
+          
+
+          <div className="bg-gray-50 p-6 rounded-lg text-center"> {/*여기*/}
             <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
               <div className="w-8 h-8 bg-blue-500 rounded" />
             </div>
             <h3 className="font-bold mb-2">AI 회화 연습</h3>
             <p className="text-sm text-gray-600">AI와 함께 자연스러운 회화 연습이 가능해 보세요</p>
           </div>
-          <div className="bg-gray-50 p-6 rounded-lg text-center">
+
+
+          <div className="bg-gray-50 p-6 rounded-lg text-center"> {/*여기*/}
             <div className="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
               <div className="w-8 h-8 bg-blue-500 rounded" />
             </div>
@@ -93,8 +101,9 @@ const WordWisePage = () => {
         <div className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold">최근 추가된 단어</h2>
-            <button className="text-blue-500 flex items-center gap-1">
-              더보기 <ArrowRight className="w-4 h-4" />
+            <button className="text-blue-500 flex items-center gap-1"> 
+              <Link to="/api/wordbook">단어장 더보기</Link>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
           <div className="grid grid-cols-4 gap-4">

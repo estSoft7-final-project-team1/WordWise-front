@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import "../static/css/WordMain.css";
+// import "../static/css/WordMain.css";
 
 function WordMain() {
   const [wordText, setWordText] = useState("");
