@@ -132,13 +132,13 @@ function WordMain() {
         </form>
         <div className="word-div">
         {error && <p style={{color: "red"}}>{error}</p>}
-        {isDetailPage && <h3>정의</h3>}
-        {wordDto.definition && <p>{wordDto.definition}</p>}
-        {isDetailPage && <h3>예문</h3>}
+        {isDetailPage && <h1 className="text-3xl font-bold">정의</h1>}
+        {wordDto.definition && <p className="mt-3">{wordDto.definition}</p>}
+        {isDetailPage && <h1 className="text-3xl font-bold mt-3">예문</h1>}
         </div>
-        <ul>
+        <ul className="mt-3">
           {exampleSentences.map((example, index) => (
-              <li key={index}>
+              <li className="mt-3" key={index}>
                 <input
                     type="checkbox"
                     className = "checkbox"
@@ -156,11 +156,11 @@ function WordMain() {
               </li>
           ))}
         </ul>
-        {isDetailPage && <div className="button-div">
+        {isDetailPage && <div className="button-div mt-3">
           <button className="btn btn-neutral" onClick={reloadWord} disabled={!wordText}>
             예문 새로고침
           </button>
-          <button className="btn btn-neutral" onClick={save}>
+          <button className="btn btn-neutral ml-3" onClick={save}>
             저장
           </button>
         </div>}

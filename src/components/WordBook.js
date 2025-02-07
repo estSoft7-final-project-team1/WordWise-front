@@ -4,7 +4,7 @@ import {Search, X, ChevronLeft, ChevronRight} from 'lucide-react';
 import ImageLogo from '../static/image/imagelogo.png';
 import axios from "axios";
 
-const MAX_PAGE_DISPLAY = 5;
+const MAX_PAGE_DISPLAY = 10;
 
 const WordBook = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const WordBook = () => {
     try {
       const response = await axios.get(`/wordbook?&page=${page}`);
       setWordBookPage(response.data);
-      if(response.data.content.length === 0){
+      if (response.data.content.length === 0) {
         setEmpty(true);
       }
     } catch (error) {
@@ -49,20 +49,32 @@ const WordBook = () => {
 
   return (
       <div>
-        <h2>Word Book List</h2>
-        <ul className="menu menu-lg bg-base-200 rounded-box w-56">
-          {wordBookPage.content.length > 0 &&
-              wordBookPage.content.map((wordBook) => (
-                  <li
-                      key={wordBook.id}
-                      onClick={() => handleWordbookClick(wordBook.id)}
-                      className="p-2 hover:bg-gray-300 hover:text-black cursor-pointer transition-colors duration-200 rounded-md"
-                  >
-                    {wordBook.wordText} : {wordBook.definition}
-                  </li>
-              ))
-          }
-        </ul>
+        <h1 className="text-3xl font-bold">내 단어장</h1>
+        {wordBookPage.content.length > 0 &&
+            <div className ="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                <tr>
+                  <th>단어</th>
+                  <th>정의</th>
+                </tr>
+                </thead>
+                <tbody>
+                {wordBookPage.content.length > 0 &&
+                    wordBookPage.content.map((wordBook) => (
+                        <tr
+                            key={wordBook.id}
+                            className="hover cursor-pointer"
+                            onClick={() => handleWordbookClick(wordBook.id)}
+                        >
+                          <td>{wordBook.wordText}</td>
+                          <td>{wordBook.definition}</td>
+                        </tr>
+                    ))}
+                </tbody>
+              </table>
+
+            </div>}
 
         {isEmpty && <div> className="text-gray-500 text-center p-4">등록된 단어가 아직
           없습니다!
