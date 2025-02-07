@@ -3,7 +3,6 @@ import axios from "axios";
 // import "../static/css/WordMain.css";
 
 function WordMain() {
-  const [key, setKey] = useState(0);
   const [wordText, setWordText] = useState("");
   const [exampleSentences, setExampleSentences] = useState([]);
   const [error, setError] = useState("");
@@ -19,7 +18,6 @@ function WordMain() {
     duplicatedPersonalExamples: [],
     newPersonalExamples: []
   });
-  const [dots, setDots] = useState('');
   const [isDetailPage, setIsDetailPage] = useState(false);
 
   const handleInputChange = (e) => {
@@ -27,7 +25,6 @@ function WordMain() {
   };
 
   const fetchExample = async () => {
-    // setIsLoadingModalOpen(true);
     document.getElementById("loadingModal").showModal();
     try {
       const response = await axios.get(
@@ -47,7 +44,7 @@ function WordMain() {
   };
 
   const reloadWord = async () => {
-    //setIsLoadingModalOpen(true);
+    // check 초기화 해주기
     document.getElementById("loadingModal").showModal();
     try {
       const response = await axios.post(
@@ -89,6 +86,7 @@ function WordMain() {
       );
 
       setSaveResult(response.data);
+      setCheckedExamples(new Set());
       document.getElementById("saveResultModal").showModal();
     } catch (error) {
       if (error.response) {
@@ -149,10 +147,10 @@ function WordMain() {
                 />
                 <div>
                   <p>
-                    <strong>Sentence:</strong> {example.sentence}
+                    <strong>예문: </strong> {example.sentence}
                   </p>
                   <p>
-                    <strong>Meaning:</strong> {example.sentenceMeaning}
+                    <strong>해석: </strong> {example.sentenceMeaning}
                   </p>
                 </div>
               </li>
@@ -205,7 +203,7 @@ function WordMain() {
                 </>
             )}
             <form method="dialog">
-              <button onClick={()=>setKey(prevKey => prevKey + 1)}>닫기</button>
+              <button>닫기</button>
             </form>
           </div>
         </dialog>
