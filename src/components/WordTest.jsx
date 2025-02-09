@@ -16,7 +16,7 @@ const WordTest = () => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/wordtest/start')
+    axios.get('/api/wordtest')
       .then(response => setTestData(response.data))
       .catch(error => console.error('Error fetching test:', error));
   }, []);
