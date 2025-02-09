@@ -48,10 +48,11 @@ const WordbookRanking = () => {
       startPage + MAX_PAGE_DISPLAY - 1);
 
   return (
-      <div>
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center space-y-6">
         <h1 className="text-3xl font-bold">단어 랭킹</h1>
         {wordCountPage.content.length > 0 && <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table text-center">
           <thead>
           <tr>
             <th>단어</th>
@@ -134,6 +135,7 @@ const WordbookRanking = () => {
           >
             <ChevronRight/>
           </button>
+        </div>
         </div>
       </div>
   );
