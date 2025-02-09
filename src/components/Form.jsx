@@ -9,6 +9,7 @@ export default function SignupForm() {
     lastName: '',
   });
 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // 폼 제출 처리 로직
