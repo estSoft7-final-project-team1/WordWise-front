@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Search, X, ChevronLeft, ChevronRight} from 'lucide-react';
 import ImageLogo from '../static/image/imagelogo.png';
-import axios from "axios";
+import axios from '../utils/ApiClient';
 
 const MAX_PAGE_DISPLAY = 10;
 
