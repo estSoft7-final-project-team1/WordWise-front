@@ -39,8 +39,8 @@ const WordWisePage = () => {
       <header className="flex justify-between items-center px-4 py-2">
         <img src="/api/placeholder/40/40" alt="WordWise Logo" className="w-10 h-10" />
         <div className="flex gap-4">
-          <button className="text-gray-600"><Link to="/api/wordbook">단어장</Link></button>
-          <button className="text-gray-600"><Link to="/api/mywordbook">개인단어장</Link></button>
+          <button className="text-gray-600"><Link to="/api/wordbookRanking">단어장</Link></button>
+          <button className="text-gray-600"><Link to="/api/wordbook">개인단어장</Link></button>
           <button className="text-gray-600"><Link to="/api/wordtest">단어테스트</Link></button>
           <button className="text-gray-600"><Link to="/api/word">예문생성</Link></button>
           <button className="text-gray-600"><Link to="/api/chat">채팅회화연습</Link></button>
