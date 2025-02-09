@@ -10,8 +10,9 @@ import Login from './components/wordwise-login'
 import FindPassword from './components/wordwise-finding-password'
 import Signup from './components/wordwise-signup'
 import Form from './components/Form'
-import PersonalWordBook from './components/wordwise-mybook'
-import WordBook from './components/wordwise-worldbook'
+import WordBook from './components/WordBook'
+import WordBookRanking from './components/WordBookRanking'
+import WordBookDetail from "./components/WordBookDetail";
 // import DashBoard from './components/wordwise-dashboard'
 
 function App() {
@@ -28,8 +29,9 @@ function App() {
         <Route path="/api/password" element={<FindPassword />} />
         <Route path="/api/signup" element={<Signup />} />
         <Route path="/form" element={<Form/>} />
-        <Route path="/api/mywordbook" element={<PersonalWordBook/>} />
         <Route path="/api/wordbook" element={<WordBook/>} />
+        <Route path="/api/wordbook/:id" element={<WordBookDetail/>} />
+        <Route path="/api/wordbookRanking" element={<WordBookRanking/>} />
         {/* <Route path="/api/3" element={<DashBoard />} /> */}
       </Routes>
     </Router>
