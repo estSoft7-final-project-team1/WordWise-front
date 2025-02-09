@@ -23,7 +23,7 @@ function App() {
         <Route path="/api/wordtest/statistics" element={<StatisticsPage />} />
         <Route path="/api/chat" element={<Chat />} />
         <Route path="/api/adim" element={<Admin />} />
-        <Route path="/api/wordwise" element={<Index />} />
+        <Route path="/" element={<Index />} />
         <Route path="/api/word" element={<WordMain />} />
         <Route path="/api/login" element={<Login />} />
         <Route path="/api/password" element={<FindPassword />} />
