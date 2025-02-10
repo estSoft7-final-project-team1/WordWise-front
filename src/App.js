@@ -22,17 +22,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
-          <Route path="/api/login" element={<Login />} />
-          <Route path="/api/signup" element={<Signup />} />
-          <Route path="/api/password" element={<FindPassword />} />
-          <Route path="/api/word" element={<WordMain />} />
-          <Route path="/api/wordbook" element={<WordBook/>} />
-          <Route path="/api/wordbook/:id" element={<WordBookDetail/>} />
-          <Route path="/api/wordbook/ranking" element={<WordBookRanking/>} />
-          <Route path="/api/wordtest" element={<WordTest />} />
-          <Route path="/api/wordtest/statistics" element={<StatisticsPage />} />
-          <Route path="/api/chat" element={<Chat />} />
-          <Route path="/api/adimin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/password" element={<FindPassword />} />
+          <Route path="/word" element={<WordMain />} />
+          <Route path="/wordbook" element={<WordBook/>} />
+          <Route path="/wordbook/:id" element={<WordBookDetail/>} />
+          <Route path="/wordbook/ranking" element={<WordBookRanking/>} />
+          <Route path="/wordtest" element={<WordTest />} />
+          <Route path="/wordtest/statistics" element={<StatisticsPage />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/adimin" element={<Admin />} />
         </Route>
       </Routes>
     </Router>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { wordSearchKeyword } from '../utils/State';
 import { useRecoilState } from 'recoil';
 import {useNavigate} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const WordWisePage = () => {
   const [ searchKeyword, setSearchKeyword ] = useRecoilState(wordSearchKeyword);
@@ -71,6 +72,7 @@ const WordWisePage = () => {
       <div className="grid grid-cols-3 gap-6 mb-12">
 
         <div className="bg-neutral p-6 rounded-lg text-center">
+        <Link to="/wordtest" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -82,9 +84,11 @@ const WordWisePage = () => {
           </div>
           <h3 className="font-bold mb-2">스마트 단어 테스트</h3>
           <p className="text-sm">효율적인 단어 학습을 제공해드립니다</p>
+          </Link>
         </div>
 
         <div className="bg-neutral p-6 rounded-lg text-center">
+        <Link to="/chat" className="block">
           <div
               className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -96,9 +100,11 @@ const WordWisePage = () => {
           </div>
           <h3 className="font-bold mb-2">AI 회화 연습</h3>
           <p className="text-sm">AI와 함께 자연스러운 회화 연습이 가능합니다</p>
+          </Link>
         </div>
 
         <div className="bg-neutral p-6 rounded-lg text-center">
+          <Link to="/statistics" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -108,8 +114,9 @@ const WordWisePage = () => {
                     d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/>
             </svg>
           </div>
-          <h3 className="font-bold mb-2">학습 분석</h3>
+          <h3 className="font-bold mb-2">학습 통계</h3>
           <p className="text-sm">나의 학습 현황을 체계적으로 분석하세요</p>
+          </Link>
         </div>
       </div>
     </div>
