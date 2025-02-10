@@ -21,7 +21,7 @@ const api = axios.create({
   // 로그아웃 함수
 export const handleLogout = () => {
     localStorage.removeItem('accessToken');
-    window.location.href = '/api/login';
+    window.location.href = '/login';
 };
 
 api.interceptors.request.use((config)=> {
