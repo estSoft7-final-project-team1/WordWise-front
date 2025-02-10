@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Search, X, ChevronLeft, ChevronRight} from 'lucide-react';
-import ImageLogo from '../static/image/imagelogo.png';
 import axios from '../utils/ApiClient';
 
 const MAX_PAGE_DISPLAY = 10;
@@ -60,7 +59,6 @@ const WordBook = () => {
       const response = await axios.get(`/wordbook/search/${searchWordText}`)
       await handleWordbookClick(response.data.id);
     } catch (error) {
-      alert(JSON.stringify(error));
       if (error.response.status === 400) {
         document.getElementById("noSuchWordModal").showModal();
       } else {

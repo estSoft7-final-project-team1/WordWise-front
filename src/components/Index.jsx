@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import { wordSearchKeyword } from '../utils/State';
+import { useRecoilState } from 'recoil';
+import {useNavigate} from 'react-router-dom';
 
 const WordWisePage = () => {
+  const [ searchKeyword, setSearchKeyword ] = useRecoilState(wordSearchKeyword);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [{
     title: "쉽고 재미있게 시작하는 영어 학습",
@@ -9,6 +13,7 @@ const WordWisePage = () => {
     title: "지금 바로 WordWise와 함께 영어 학습을 시작해 보세요",
     subtitle: "매일 15분씩, 꾸준한 학습으로 영어 실력을 향상 시킬수 있습니다."
   }];
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -16,6 +21,15 @@ const WordWisePage = () => {
     }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
+
+  const handleInputChange = (e) => {
+    setSearchKeyword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/api/word")
+  };
 
   return (<div className="w-full">
     <div className="carouesel bg-neutral p-8 relative min-h-[300px]">
@@ -36,13 +50,12 @@ const WordWisePage = () => {
 
     <div
         className="word-input-div max-w-3xl mx-auto -mt-6 px-4 relative z-10">
-      <form //onSubmit={handleSubmit}
+      <form onSubmit={handleSubmit}
           className="rounded-lg bg-neutral-content shadow-lg flex items-center p-2 space-x-2">
         <input
             type="text"
             className="flex-1 px-4 py-2 outline-none rounded-md"
-            //value={wordText}
-            //onChange={handleInputChange}
+            onChange={handleInputChange}
             pattern="[a-z]*"
             title="영어 소문자만 입력할 수 있습니다."
             placeholder="단어를 입력해 주세요"

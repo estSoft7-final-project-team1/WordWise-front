@@ -7,6 +7,13 @@ const loginState =  atom(
     }
 );
 
+const wordSearchKeyword = atom(
+    {
+      key: "searchKeyword",
+      default: ""
+    }
+);
 
-export { loginState };
+
+export { loginState, wordSearchKeyword };
 
