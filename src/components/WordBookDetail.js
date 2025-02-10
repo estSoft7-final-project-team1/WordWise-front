@@ -39,7 +39,7 @@ const WordbookDetail = () => {
   }
 
   return (
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen mt-5">
         <div className="flex flex-col items-center space-y-6">
         <div className="info-div text-center">
           <h1 className="text-4xl font-bold">{wordbook.wordText}</h1>

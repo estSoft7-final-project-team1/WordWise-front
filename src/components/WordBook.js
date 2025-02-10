@@ -74,7 +74,7 @@ const WordBook = () => {
   }, []);
 
   return (
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-center min-h-screen mt-5">
         <div className="flex flex-col items-center space-y-6">
           <h1 className="text-3xl font-bold">내 단어장</h1>
           <div className="word-input-div">
@@ -87,7 +87,7 @@ const WordBook = () => {
                   onChange={handleInputChange}
                   pattern="[a-z]*"
                   title="영어 소문자만 입력할 수 있습니다."
-                  placeholder="단어를 입력하세요"
+                  placeholder="단어를 입력해 주세요"
               />
               <button className="btn btn-neutral h-full px-4 py-2"
                       type="submit">

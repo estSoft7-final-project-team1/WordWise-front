@@ -64,41 +64,28 @@ function Joinmembership() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 헤더 */}
-      <header className="flex justify-between items-center px-4 py-2 border-b ">
-        <div className="flex items-center">
-          <img src={ImageLogo} alt="WordWise Logo" className="h-10" />
-        </div>
-        <div className="flex gap-4">
-          <button className="text-gray-600">학습하기</button>
-          <button className="text-gray-600">단어장</button>
-          <button className="text-gray-600">회화연습</button>
-          <button className="bg-blue-500 text-white px-4 py-1 rounded-md">로그인</button>
-        </div>
-      </header>
-
-      {/* 배너 섹션 */}
-      <div className="relative">
-        <div
-          className="w-full h-[180px]"
-          style={{
-            backgroundImage: `url(${Imagebackground})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <div className="absolute inset-0 bg-blue-500 bg-opacity-70">
-            <div className="h-full flex flex-col items-center justify-center text-center px-4">
-              <h1 className="text-white text-2xl font-bold mb-2">
-                {slides[currentSlide].title}
-              </h1>
-              <p className="text-white text-opacity-80">
-                {slides[currentSlide].subtitle}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/*/!* 배너 섹션 *!/*/}
+      {/*<div className="relative">*/}
+      {/*  <div*/}
+      {/*    className="w-full h-[180px]"*/}
+      {/*    style={{*/}
+      {/*      backgroundImage: `url(${Imagebackground})`,*/}
+      {/*      backgroundSize: 'cover',*/}
+      {/*      backgroundPosition: 'center'*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <div className="absolute inset-0 bg-blue-500 bg-opacity-70">*/}
+      {/*      <div className="h-full flex flex-col items-center justify-center text-center px-4">*/}
+      {/*        <h1 className="text-white text-2xl font-bold mb-2">*/}
+      {/*          {slides[currentSlide].title}*/}
+      {/*        </h1>*/}
+      {/*        <p className="text-white text-opacity-80">*/}
+      {/*          {slides[currentSlide].subtitle}*/}
+      {/*        </p>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/* 회원가입 폼 */}
       <div className="min-h-screen flex items-center justify-center bg-base-200">
