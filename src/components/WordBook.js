@@ -118,13 +118,11 @@ const WordBook = () => {
                         ))}
                     </tbody>
                   </table>
+                  {isEmpty && <div className="text-gray-500 text-center p-4">등록된 단어가
+                    아직
+                    없습니다!
+                  </div>}
                 </div>}
-
-            {isEmpty && <div className="text-gray-500 text-center p-4">등록된 단어가
-              아직
-              없습니다!
-            </div>}
-
             {isEmpty && <div className="mt-4">
               <button className="btn btn-neutral"
                       onClick={() => navigate("/word")}>

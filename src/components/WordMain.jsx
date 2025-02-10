@@ -1,10 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from '../utils/ApiClient';
-import { wordSearchKeyword } from '../utils/State';
-import {useRecoilState} from "recoil";
 
 function WordMain() {
-  const [ searchKeyword, setSearchKeyword ] = useRecoilState(wordSearchKeyword);
   const [wordText, setWordText] = useState("");
   const [exampleSentences, setExampleSentences] = useState([]);
   const [error, setError] = useState("");
@@ -20,14 +17,6 @@ function WordMain() {
   const handleInputChange = (e) => {
     setWordText(e.target.value);
   };
-
-  useEffect(() => {
-    if(searchKeyword!=="") {
-      setWordText(searchKeyword);
-      setSearchKeyword("");
-      fetchExample();
-    }
-  })
 
   const fetchExample = async () => {
     document.getElementById("loadingModal").showModal();
