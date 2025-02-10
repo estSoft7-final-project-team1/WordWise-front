@@ -13,27 +13,12 @@ import WordBook from './components/WordBook'
 import WordBookRanking from './components/WordBookRanking'
 import WordBookDetail from "./components/WordBookDetail";
 import Layout from './components/Layout';
+import LoginAuthorization from './utils/LoginAuthorization';
 // import DashBoard from './components/wordwise-dashboard'
 
 function App() {
   return (
     <Router>
-      {/*<Routes>*/}
-      {/*  <Route path="/" element={<Index />} />*/}
-      {/*  <Route path="/api/login" element={<Login />} />*/}
-      {/*  <Route path="/api/signup" element={<Signup />} />*/}
-      {/*  <Route path="/api/password" element={<FindPassword />} />*/}
-      {/*  <Route path="/api/word" element={<WordMain />} />*/}
-      {/*  <Route path="/api/wordbook" element={<WordBook/>} />*/}
-      {/*  <Route path="/api/wordbook/:id" element={<WordBookDetail/>} />*/}
-      {/*  <Route path="/api/wordbook/ranking" element={<WordBookRanking/>} />*/}
-      {/*  <Route path="/api/wordtest" element={<WordTest />} />*/}
-      {/*  <Route path="/api/wordtest/statistics" element={<StatisticsPage />} />*/}
-      {/*  <Route path="/api/chat" element={<Chat />} />*/}
-      {/*  <Route path="/api/adimin" element={<Admin />} />*/}
-      {/*  /!* <Route path="/api/3" element={<DashBoard />} /> *!/*/}
-      {/*</Routes>*/}
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
