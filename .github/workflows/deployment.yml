@@ -1,6 +1,7 @@
 name: wordwise-front
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
