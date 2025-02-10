@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Search, X, ArrowRight } from 'lucide-react';
 import { Link } from "react-router-dom";
-
+import LogoImage from '../static/image/imagelogo.png'
+import backgroundImage from '../static/image/imagebackground.png'
 
 const WordWisePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,7 +38,7 @@ const WordWisePage = () => {
   return (
     <div className="w-full bg-white">
       <header className="flex justify-between items-center px-4 py-2">
-        <img src="/api/placeholder/40/40" alt="WordWise Logo" className="w-10 h-10" />
+        <img src={LogoImage} alt="WordWise Logo" className="w-10 h-10" />
         <div className="flex gap-4">
           <button className="text-gray-600"><Link to="/api/wordbookRanking">단어장</Link></button>
           <button className="text-gray-600"><Link to="/api/wordbook">개인단어장</Link></button>
@@ -63,7 +64,7 @@ const WordWisePage = () => {
       </header>
 
       <div className="bg-blue-500 p-8 relative min-h-[300px]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/your-background-image.jpg")' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage}} />
         <div className="relative z-10 text-white mb-8">
           <h1 className="text-3xl font-bold mb-2">{slides[currentSlide].title}</h1>
           <p className="text-lg opacity-80">{slides[currentSlide].subtitle}</p>

@@ -122,7 +122,7 @@ const WordBook = () => {
                   </table>
                 </div>}
 
-            {isEmpty && <div> className="text-gray-500 text-center p-4">등록된 단어가
+            {isEmpty && <div className="text-gray-500 text-center p-4">등록된 단어가
               아직
               없습니다!
             </div>}

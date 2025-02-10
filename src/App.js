@@ -12,6 +12,7 @@ import Signup from './components/wordwise-signup'
 import WordBook from './components/WordBook'
 import WordBookRanking from './components/WordBookRanking'
 import WordBookDetail from "./components/WordBookDetail";
+import LoginAuthorization from './utils/LoginAuthorization';
 // import DashBoard from './components/wordwise-dashboard'
 
 function App() {
@@ -21,12 +22,12 @@ function App() {
         <Route path="/api/wordtest" element={<WordTest />} />
         <Route path="/api/wordtest/statistics" element={<StatisticsPage />} />
         <Route path="/api/chat" element={<Chat />} />
-        <Route path="/api/adim" element={<Admin />} />
+        <Route path="/api/adim" element={<Admin />}/>
         <Route path="/" element={<Index />} />
         <Route path="/api/word" element={<WordMain />} />
         <Route path="/api/login" element={<Login />} />
         <Route path="/api/password" element={<FindPassword />} />
-        <Route path="/api/signup" element={<Signup />} />
+        <Route path="/api/signup" element={<Signup/>} />
         <Route path="/api/wordbook" element={<WordBook/>} />
         <Route path="/api/wordbook/:id" element={<WordBookDetail/>} />
         <Route path="/api/wordbookRanking" element={<WordBookRanking/>} />

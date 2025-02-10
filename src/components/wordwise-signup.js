@@ -26,6 +26,7 @@ function Joinmembership() {
     }
   ];
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
