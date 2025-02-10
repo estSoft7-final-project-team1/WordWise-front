@@ -35,7 +35,7 @@ function Chat() {
 
   // 웹소켓 연결 초기화
   useEffect(() => {
-    const websocket = new WebSocket('ws://52.78.105.134/chat-endpoint');
+    const websocket = new WebSocket('ws://52.78.105.134/api/chat-endpoint');
     setWs(websocket);
     websocket.onopen = () => {
       setIsConnected(true); // 연결 상태 업데이트
