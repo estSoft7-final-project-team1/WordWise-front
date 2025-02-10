@@ -13,7 +13,7 @@ const WordbookDetail = () => {
 
   const deleteWordBook = async () => {
     try {
-      const response = await axios.delete(`/wordbook/${id}`);
+      const response = await axios.delete(`/api/wordbook/${id}`);
       alert(`단어 ${response.data.wordText} 삭제가 완료되었습니다.`);
       navigate('/wordbook');
     } catch (error) {
@@ -24,7 +24,7 @@ const WordbookDetail = () => {
   useEffect(() => {
     const fetchWordbook = async () => {
       try {
-        const response = await axios.get(`/wordbook/${id}`);
+        const response = await axios.get(`/api/wordbook/${id}`);
         setWordbook(response.data);
       } catch (error) {
         console.error('Error fetching wordbook:', error);
