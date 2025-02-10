@@ -35,13 +35,13 @@ function Joinmembership() {
 
     
     console.log("전송 데이터 : ", formData);
-    axios.post('/api/signup', formData, {
+    axios.post('/signup', formData, {
       headers: { 'Content-Type': 'application/json' }
     }) // <-- 여기서 괄호 추가!
     .then((response) => {
       console.log("응답 데이터 : ", response);
       alert("가입 성공!");
-      navigate('/api/login'); // 주의: '/api/login' 대신 일반 경로 사용
+      navigate('/login'); // 주의: '/api/login' 대신 일반 경로 사용
     })
     .catch(error => { 
       alert("가입 실패!");

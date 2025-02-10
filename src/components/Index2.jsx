@@ -40,11 +40,11 @@ const WordWisePage = () => {
       <header className="flex justify-between items-center px-4 py-2">
         <img src={LogoImage} alt="WordWise Logo" className="w-10 h-10" />
         <div className="flex gap-4">
-          <button className="text-gray-600"><Link to="/api/wordbookRanking">단어장</Link></button>
-          <button className="text-gray-600"><Link to="/api/wordbook">개인단어장</Link></button>
-          <button className="text-gray-600"><Link to="/api/wordtest">단어테스트</Link></button>
-          <button className="text-gray-600"><Link to="/api/word">예문생성</Link></button>
-          <button className="text-gray-600"><Link to="/api/chat">채팅회화연습</Link></button>
+          <button className="text-gray-600"><Link to="/wordbookRanking">단어장</Link></button>
+          <button className="text-gray-600"><Link to="/wordbook">개인단어장</Link></button>
+          <button className="text-gray-600"><Link to="/wordtest">단어테스트</Link></button>
+          <button className="text-gray-600"><Link to="/word">예문생성</Link></button>
+          <button className="text-gray-600"><Link to="/chat">채팅회화연습</Link></button>
           {isLoggedIn ? (
             <>
               <button className="text-gray-600"><Link to="/api/mypage">마이페이지</Link></button>
@@ -57,7 +57,7 @@ const WordWisePage = () => {
             </>
           ) : (
             <button className="bg-blue-500 text-white px-4 py-1 rounded-md">
-              <Link to="/api/login">로그인</Link>
+              <Link to="/login">로그인</Link>
             </button>
           )}
         </div>
@@ -129,7 +129,7 @@ const WordWisePage = () => {
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold">최근 추가된 단어</h2>
             <button className="text-blue-500 flex items-center gap-1">
-              <Link to="/api/wordbook">단어장 더보기</Link>
+              <Link to="/wordbook">단어장 더보기</Link>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
