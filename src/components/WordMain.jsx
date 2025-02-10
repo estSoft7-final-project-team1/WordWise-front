@@ -32,7 +32,7 @@ function WordMain() {
   const fetchExample = async () => {
     document.getElementById("loadingModal").showModal();
     try {
-      const response = await axios.get(`/word/${wordText}`);
+      const response = await axios.get(`/api/word/${wordText}`);
       setWordDto(response.data);
       const examples = response.data.exampleDtos || [];
       setExampleSentences(examples);
@@ -51,7 +51,7 @@ function WordMain() {
   const reloadWord = async () => {
     document.getElementById("loadingModal").showModal();
     try {
-      const response = await axios.post(`/word/${wordDto.wordText}/reload`,
+      const response = await axios.post(`/api/word/${wordDto.wordText}/reload`,
           wordDto, {
             headers: {"Content-Type": "application/json"},
           });
@@ -78,7 +78,7 @@ function WordMain() {
     };
 
     try {
-      const response = await axios.post(`/word`, saveWordDto, {
+      const response = await axios.post(`/api/word`, saveWordDto, {
         headers: {"Content-Type": "application/json"},
       });
 
