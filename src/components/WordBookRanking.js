@@ -27,7 +27,7 @@ const WordbookRanking = () => {
 
   const fetchWordBookRanking = async (page) => {
     try {
-      const response = await axios.get(`/wordbook/ranking?page=${page}`);
+      const response = await axios.get(`/api/wordbook/ranking?page=${page}`);
       setWordCountPage(response.data);
       if (response.data.content.length === 0) {
         setEmpty(true);
