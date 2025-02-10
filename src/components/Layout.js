@@ -1,29 +1,41 @@
 import React from 'react';
-import {useState} from 'react';
+import { loginState } from "../utils/State";
+import { useRecoilState } from "recoil";
 import {Outlet, useNavigate} from 'react-router-dom';
 
 export const Layout = () => {
   const navigate = useNavigate();
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [ isLogin, setIsLogin ] = useRecoilState(loginState);
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLogin(false);
+    navigate('/');
+  };
 
   return (
       <div>
         <header>
           <div className="navbar bg-base-300">
             <div className="flex-1">
-              <a className="btn btn-ghost text-xl" onClick={() => navigate("/")}>WordWise</a>
+              <a className="btn btn-ghost text-xl"
+                 onClick={() => navigate("/")}>WordWise</a>
             </div>
             <div className="flex-none">
               <ul className="menu menu-horizontal px-1  z-50">
                 <li><a onClick={() => navigate("/api/word")}>단어검색</a></li>
                 <li><a onClick={() => navigate("/api/wordbook")}>내 단어장</a></li>
-                <li><a onClick={() => navigate("/api/wordbook/ranking")}>단어장 랭킹</a></li>
+                <li><a onClick={() => navigate("/api/wordbook/ranking")}>단어장
+                  랭킹</a></li>
                 <li>
                   <details>
                     <summary>단어 테스트</summary>
                     <ul className="bg-base-100 rounded-t-none p-2 z-50">
-                      <li><a onClick={() => navigate("/api/wordtest")}>단어 테스트</a></li>
-                      <li><a onClick={() => navigate("/api/wordtest/statistics")}>테스트 통계</a></li>
+                      <li><a onClick={() => navigate("/api/wordtest")}>단어
+                        테스트</a></li>
+                      <li><a
+                          onClick={() => navigate("/api/wordtest/statistics")}>테스트
+                        통계</a></li>
                     </ul>
                   </details>
                 </li>
@@ -32,13 +44,31 @@ export const Layout = () => {
                   <details>
                     <summary>계정관리</summary>
                     <ul className="bg-base-100 rounded-t-none p-2 z-50">
-                      <li><a onClick={() => navigate("/api/password")}>비밀번호 찾기</a></li>
+                      <li><a onClick={() => navigate("/api/password")}>비밀번호
+                        찾기</a></li>
                       <li><a>Link 2</a></li>
                     </ul>
                   </details>
                 </li>
-                {isSignedIn ? (<li className="text-red-500"><a onClick={() => navigate("/")}>로그아웃</a></li>)
-                    : (<li className="text-green-500"><a onClick={() => navigate("/api/login")}>로그인</a></li>)}
+                {
+                  isLogin
+                    ? (
+                          <li className="text-red-500">
+                            <a
+                              onClick={handleLogout}>
+                              로그아웃
+                            </a>
+                          </li>
+                      )
+                    : (
+                        <li className="text-green-500">
+                          <a
+                            onClick={() => navigate("/api/login")}>
+                            로그인
+                          </a>
+                        </li>
+                    )
+                }
               </ul>
             </div>
           </div>
