@@ -33,7 +33,7 @@ const WordWisePage = () => {
   };
 
   return (<div className="w-full">
-    <div className="carouesel bg-neutral p-8 relative min-h-[300px]">
+    <div className="carouesel p-8 relative min-h-[300px]">
       <div className="relative z-10 mb-8">
         <h1 className="text-3xl font-bold mb-2">{slides[currentSlide].title}</h1>
         <p className="text-lg opacity-80">{slides[currentSlide].subtitle}</p>
@@ -71,7 +71,7 @@ const WordWisePage = () => {
       <h2 className="text-xl font-bold mb-6">주요 기능</h2>
       <div className="grid grid-cols-3 gap-6 mb-12">
 
-        <div className="bg-neutral p-6 rounded-lg text-center">
+        <div className="bg-neutral-content p-6 rounded-lg text-center text-neutral">
         <Link to="/wordtest" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -87,7 +87,7 @@ const WordWisePage = () => {
           </Link>
         </div>
 
-        <div className="bg-neutral p-6 rounded-lg text-center">
+        <div className="bg-neutral-content p-6 rounded-lg text-center text-neutral">
         <Link to="/chat" className="block">
           <div
               className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -103,7 +103,7 @@ const WordWisePage = () => {
           </Link>
         </div>
 
-        <div className="bg-neutral p-6 rounded-lg text-center">
+        <div className="bg-neutral-content p-6 rounded-lg text-center text-neutral">
           <Link to="/statistics" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
