@@ -74,7 +74,7 @@ const WordbookDetail = () => {
         <div className="button-div">
           <button
               className="btn btn-neutral mt-6"
-              onClick={() => navigate('/api/wordbook')}
+              onClick={() => navigate('/wordbook')}
           >
             목록으로 돌아가기
           </button>

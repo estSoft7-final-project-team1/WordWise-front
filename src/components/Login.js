@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     console.log("email :", email);
     console.log("password :", password);
-    axios.post('/signin',{email,password},{
+    axios.post('/api/signin',{email,password},{
       headers: {'Content-Type': 'application/json' }
     })
     .then((response) =>{
