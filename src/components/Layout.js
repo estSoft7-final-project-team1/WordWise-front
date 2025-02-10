@@ -40,16 +40,6 @@ export const Layout = () => {
                   </details>
                 </li>
                 <li><a onClick={() => navigate("/api/chat")}>채팅</a></li>
-                <li>
-                  <details>
-                    <summary>계정관리</summary>
-                    <ul className="bg-base-100 rounded-t-none p-2 z-50">
-                      <li><a onClick={() => navigate("/api/password")}>비밀번호
-                        찾기</a></li>
-                      <li><a>Link 2</a></li>
-                    </ul>
-                  </details>
-                </li>
                 {
                   isLogin
                     ? (
