@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Imagebackground from '../static/image/imagebackground.png';
-import ImageLogo from '../static/image/imagelogo.png';
 
 const PasswordResetPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,18 +29,7 @@ const PasswordResetPage = () => {
   };
 
   return (
-    <div className="w-full bg-white">
-      {/* 헤더 */}
-      <header className="flex justify-between items-center px-4 py-2">
-        <img src={ImageLogo} alt="WordWise Logo" className="w-10 h-10" />
-        <div className="flex gap-4">
-          <button className="text-gray-600">학습하기</button>
-          <button className="text-gray-600">단어장</button>
-          <button className="text-gray-600">채팅연습</button>
-          <button className="bg-blue-500 text-white px-4 py-1 rounded-md">로그인</button>
-        </div>
-      </header>
-
+    <div className="w-full">
       {/* 배너 섹션 */}
       <div className="relative bg-blue-500">
         {/* 배경 이미지 */}
@@ -67,7 +55,7 @@ const PasswordResetPage = () => {
 
       {/* 비밀번호 찾기 폼 */}
       <div className="max-w-md mx-auto mt-8 p-6">
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-neutral rounded-lg shadow p-6">
           <h2 className="text-xl font-bold text-center mb-6">비밀번호 찾기</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -83,7 +71,7 @@ const PasswordResetPage = () => {
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex-1 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+                className="flex-1 btn text-white py-2 rounded-md"
               >
                 확인
               </button>
@@ -92,7 +80,7 @@ const PasswordResetPage = () => {
                 onClick={() => window.history.back()}
                 className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300"
               >
-                Cancel
+                취소
               </button>
             </div>
           </form>
