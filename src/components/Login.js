@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     console.log("email :", email);
     console.log("password :", password);
-    axios.post('/api/signin',{email,password},{
+    axios.post('/signin',{email,password},{
       headers: {'Content-Type': 'application/json' }
     })
     .then((response) =>{
@@ -116,7 +116,7 @@ const LoginPage = () => {
 
               <div className="text-center mt-4">
                 <span className="text-gray-600">아직 회원이 아니신가요? </span>
-                <Link to="/api/signup" className="text-blue-500 hover:underline">
+                <Link to="/signup" className="text-blue-500 hover:underline">
                   회원가입
                 </Link>
               </div>

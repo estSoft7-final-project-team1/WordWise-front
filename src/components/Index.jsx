@@ -72,7 +72,7 @@ const WordWisePage = () => {
       <div className="grid grid-cols-3 gap-6 mb-12">
 
         <div className="bg-neutral p-6 rounded-lg text-center">
-        <Link to="/api/wordtest" className="block">
+        <Link to="/wordtest" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -88,7 +88,7 @@ const WordWisePage = () => {
         </div>
 
         <div className="bg-neutral p-6 rounded-lg text-center">
-        <Link to="/api/chat" className="block">
+        <Link to="/chat" className="block">
           <div
               className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -104,7 +104,7 @@ const WordWisePage = () => {
         </div>
 
         <div className="bg-neutral p-6 rounded-lg text-center">
-          <Link to="/api/statistics" className="block">
+          <Link to="/statistics" className="block">
           <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"

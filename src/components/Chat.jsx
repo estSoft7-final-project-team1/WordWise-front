@@ -15,7 +15,7 @@ function Chat() {
     const accessToken = localStorage.getItem('accessToken');
     if (!accessToken) {
       alert('로그인이 필요합니다. 로그인 후 접근해주세요.');
-      navigate('/api/login');
+      navigate('/login');
     }
   }, [navigate]);
 
