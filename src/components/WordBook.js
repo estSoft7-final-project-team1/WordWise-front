@@ -56,7 +56,7 @@ const WordBook = () => {
 
   const fetchWordBook = async () => {
     try {
-      const response = await axios.get(`/wordbook/search/${searchWordText}`)
+      const response = await axios.get(`/wordbook/${searchWordText}`)
       await handleWordbookClick(response.data.id);
     } catch (error) {
       if (error.response.status === 400) {
