@@ -15,7 +15,7 @@ const WordbookDetail = () => {
     try {
       const response = await axios.delete(`/wordbook/${id}`);
       alert(`단어 ${response.data.wordText} 삭제가 완료되었습니다.`);
-      navigate('/api/wordbook');
+      navigate('/wordbook');
     } catch (error) {
       console.error('Error fetching wordbook:', error);
     }
@@ -74,7 +74,7 @@ const WordbookDetail = () => {
         <div className="button-div">
           <button
               className="btn btn-neutral mt-6"
-              onClick={() => navigate('/api/wordbook')}
+              onClick={() => navigate('/wordbook')}
           >
             목록으로 돌아가기
           </button>

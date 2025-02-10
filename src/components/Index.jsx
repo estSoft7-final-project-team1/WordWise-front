@@ -29,7 +29,7 @@ const WordWisePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/api/word")
+    navigate("/word")
   };
 
   return (<div className="w-full">

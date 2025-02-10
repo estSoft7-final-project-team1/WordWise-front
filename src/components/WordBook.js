@@ -30,7 +30,7 @@ const WordBook = () => {
 
   const fetchWordBooks = async (page) => {
     try {
-      const response = await axios.get(`/wordbook?&page=${page}`);
+      const response = await axios.get(`/api/wordbook?&page=${page}`);
       setWordBookPage(response.data);
       if (response.data.content.length === 0) {
         setEmpty(true);
@@ -42,11 +42,11 @@ const WordBook = () => {
 
   // 상세 조회 페이지로 이동
   const handleWordbookClick = async (wordBookId) => {
-    navigate(`/api/wordbook/${wordBookId}`);
+    navigate(`/wordbook/${wordBookId}`);
   };
 
   const handleGoWordPage = async () => {
-    navigate(`/api/word`);
+    navigate(`/word`);
   };
 
   const handleSubmit = (e) => {
@@ -56,7 +56,7 @@ const WordBook = () => {
 
   const fetchWordBook = async () => {
     try {
-      const response = await axios.get(`/wordbook/${searchWordText}`)
+      const response = await axios.get(`/api/wordbook/${searchWordText}`)
       await handleWordbookClick(response.data.id);
     } catch (error) {
       if (error.response.status === 400) {
@@ -127,7 +127,7 @@ const WordBook = () => {
 
             {isEmpty && <div className="mt-4">
               <button className="btn btn-neutral"
-                      onClick={() => navigate("/api/word")}>
+                      onClick={() => navigate("/word")}>
                 단어 검색으로 이동
               </button>
             </div>}

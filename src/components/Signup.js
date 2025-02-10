@@ -35,7 +35,7 @@ function Joinmembership() {
 
     
     console.log("전송 데이터 : ", formData);
-    axios.post('/signup', formData, {
+    axios.post('/api/signup', formData, {
       headers: { 'Content-Type': 'application/json' }
     }) // <-- 여기서 괄호 추가!
     .then((response) => {

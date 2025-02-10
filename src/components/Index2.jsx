@@ -47,7 +47,7 @@ const WordWisePage = () => {
           <button className="text-gray-600"><Link to="/chat">채팅회화연습</Link></button>
           {isLoggedIn ? (
             <>
-              <button className="text-gray-600"><Link to="/api/mypage">마이페이지</Link></button>
+              <button className="text-gray-600"><Link to="/mypage">마이페이지</Link></button>
               <button
                 className="bg-blue-500 text-white px-4 py-1 rounded-md"
                 onClick={handleLogout}
