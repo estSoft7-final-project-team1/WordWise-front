@@ -77,7 +77,7 @@ const WordbookRanking = () => {
 
         {isEmpty && <div className="mt-4">
           <button className="btn btn-neutral"
-                  onClick={() => navigate("/api/word")}>
+                  onClick={() => navigate("/word")}>
             단어 검색으로 이동
           </button>
         </div>}
