@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { loginState } from "../utils/State";
+import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [ isLogin, setIsLogin ] = useRecoilState(loginState);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,9 +24,19 @@ const LoginPage = () => {
       const { accessToken } = response.data;
       console.log("response data: ", response.data)
       localStorage.setItem("accessToken", accessToken);
-      console.log("로그인 성공")
+      console.log("로그인 성공");
+
+      const token = localStorage.getItem("accessToken");
       console.log("저장된 accessToken : ", localStorage.getItem("accessToken"));
-      navigate('/');
+
+      // Login 상태 처리
+      if ( token !== null ) {
+        setIsLogin(true);
+        navigate('/');
+      } else {
+        console.log("Sth went wrong....");
+      }
+
     })
     .catch(error => {
       console.log("로그인 실패");
