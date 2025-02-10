@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow } from 'swiper/modules';
-import axios from 'axios';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import './WordTest.css'
+import axios from '../utils/ApiClient';
 
 const WordTest = () => {
   const [testData, setTestData] = useState([]);
@@ -17,7 +16,7 @@ const WordTest = () => {
   const swiperRef = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/wordtest/start')
+    axios.get('/api/wordtest')
       .then(response => setTestData(response.data))
       .catch(error => console.error('Error fetching test:', error));
   }, []);
