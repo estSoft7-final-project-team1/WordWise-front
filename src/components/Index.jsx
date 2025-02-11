@@ -89,7 +89,7 @@ const WordWisePage = () => {
 
         <div
             className="bg-neutral-content p-6 rounded-lg text-center text-neutral">
-          <Link to="/statistics" className="block">
+          <Link to="/wordtest/statistics" className="block">
             <div
                 className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
