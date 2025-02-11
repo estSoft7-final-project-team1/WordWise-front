@@ -7,7 +7,7 @@ const AnswerTable = () => {
   const [testData, setTestData] = useState([]);
   // 예시 데이터 배열
   useEffect(() => {
-    axios.get('/api/statistics')
+    axios.get('/api/wordtest/statistics')
       .then(response => setTestData(response.data))
       .catch(error => console.error('데이터 불러오기 오류:', error));
   }, []);
